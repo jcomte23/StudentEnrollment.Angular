@@ -1,1 +1,14 @@
-<p>navbar works!</p>
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-brand">
+      <a routerLink="/courses">Student Enrollment</a>
+    </div>
+
+    <div class="navbar-menu" *ngIf="currentUser">
+      <a routerLink="/courses" routerLinkActive="active">Cursos Disponibles</a>
+      <a routerLink="/my-courses" routerLinkActive="active">Mis Cursos</a>
+      <a routerLink="/profile" routerLinkActive="active">Mi Perfil</a>
+      <button class="btn-logout" (click)="logout()">Cerrar Sesión</button>
+    </div>
+  </div>
+</nav>
