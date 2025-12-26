@@ -1,1 +1,58 @@
-<p>login works!</p>
+<div class="login-container">
+  <div class="login-card">
+    <h2>Iniciar Sesión</h2>
+
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="loginData.email"
+          required
+          email
+          placeholder="tu@email.com"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="loginData.password"
+          required
+          placeholder="********"
+        />
+      </div>
+
+      <div class="form-group checkbox-group">
+        <input
+          type="checkbox"
+          id="rememberMe"
+          name="rememberMe"
+          [(ngModel)]="loginData.rememberMe"
+        />
+        <label for="rememberMe">Recordarme</label>
+      </div>
+
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <button
+        type="submit"
+        class="btn-primary"
+        [disabled]="!loginForm.valid || isLoading"
+      >
+        {{ isLoading ? 'Ingresando...' : 'Ingresar' }}
+      </button>
+    </form>
+
+    <div class="register-link">
+      ¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a>
+    </div>
+  </div>
+</div>
