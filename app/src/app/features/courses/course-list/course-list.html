@@ -1,1 +1,46 @@
-<p>course-list works!</p>
+<app-navbar></app-navbar>
+
+<div class="courses-container">
+  <h2>Cursos Disponibles</h2>
+
+  <div class="success-message" *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="loading" *ngIf="isLoading">
+    Cargando cursos...
+  </div>
+
+  <div class="courses-grid" *ngIf="!isLoading">
+    <div class="course-card" *ngFor="let course of courses">
+      <h3>{{ course.courseName }}</h3>
+
+      <div class="course-info">
+        <p><strong>Créditos:</strong> {{ course.credits }}</p>
+        <p><strong>Profesor:</strong> {{ course.professorName }}</p>
+        <p><strong>Cupos:</strong> {{ course.enrolledStudents }} / {{ course.maxStudents }}</p>
+      </div>
+
+      <div class="course-actions">
+        <button
+          class="btn-primary"
+          (click)="enroll(course.courseId)"
+          [disabled]="course.enrolledStudents >= course.maxStudents"
+        >
+          {{ course.enrolledStudents >= course.maxStudents ? 'Cupos Llenos' : 'Inscribirse' }}
+        </button>
+        <button class="btn-secondary" (click)="viewStudents(course.courseId)">
+          Ver Estudiantes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty-state" *ngIf="!isLoading && courses.length === 0">
+    <p>No hay cursos disponibles en este momento.</p>
+  </div>
+</div>
