@@ -1,1 +1,33 @@
-<p>course-students works!</p>
+<app-navbar></app-navbar>
+
+<div class="students-container">
+  <button class="btn-back" (click)="goBack()">
+    ← Volver a Cursos
+  </button>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="loading" *ngIf="isLoading">
+    Cargando estudiantes...
+  </div>
+
+  <div class="students-card" *ngIf="!isLoading && courseData">
+    <h2>{{ courseData.courseName }}</h2>
+    <p class="student-count">
+      Total de estudiantes: {{ courseData.studentNames.length }}
+    </p>
+
+    <div class="students-list" *ngIf="courseData.studentNames.length > 0">
+      <div class="student-item" *ngFor="let name of courseData.studentNames; let i = index">
+        <span class="student-number">{{ i + 1 }}</span>
+        <span class="student-name">{{ name }}</span>
+      </div>
+    </div>
+
+    <div class="empty-state" *ngIf="courseData.studentNames.length === 0">
+      <p>No hay estudiantes inscritos en este curso todavía.</p>
+    </div>
+  </div>
+</div>
