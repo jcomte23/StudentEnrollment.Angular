@@ -1,1 +1,116 @@
-<p>profile works!</p>
+<app-navbar></app-navbar>
+
+<div class="profile-container">
+  <div class="profile-card">
+    <h2>Mi Perfil</h2>
+
+    <div class="success-message" *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+
+    <div class="error-message" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <div *ngIf="user && !isEditing" class="profile-view">
+      <div class="info-group">
+        <label>Nombre:</label>
+        <p>{{ user.firstName }}</p>
+      </div>
+
+      <div class="info-group">
+        <label>Apellido:</label>
+        <p>{{ user.lastName }}</p>
+      </div>
+
+      <div class="info-group">
+        <label>Email:</label>
+        <p>{{ user.email }}</p>
+      </div>
+
+      <div class="button-group">
+        <button class="btn-primary" (click)="toggleEdit()">
+          Editar Perfil
+        </button>
+        <button class="btn-danger" (click)="toggleDelete()">
+          Eliminar Cuenta
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="isEditing" class="profile-edit">
+      <form (ngSubmit)="onUpdate()" #editForm="ngForm">
+        <div class="form-group">
+          <label for="firstName">Nombre</label>
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            [(ngModel)]="editData.firstName"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Apellido</label>
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            [(ngModel)]="editData.lastName"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="editData.email"
+            required
+            email
+          />
+        </div>
+
+        <div class="button-group">
+          <button type="submit" class="btn-primary" [disabled]="!editForm.valid">
+            Guardar Cambios
+          </button>
+          <button type="button" class="btn-secondary" (click)="toggleEdit()">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="isDeleting" class="delete-section">
+      <h3>Eliminar Cuenta</h3>
+      <p>Para confirmar la eliminación de tu cuenta, ingresa tu contraseña:</p>
+
+      <form (ngSubmit)="onDelete()" #deleteForm="ngForm">
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            [(ngModel)]="deleteData.password"
+            required
+            placeholder="Tu contraseña"
+          />
+        </div>
+
+        <div class="button-group">
+          <button type="submit" class="btn-danger" [disabled]="!deleteForm.valid">
+            Confirmar Eliminación
+          </button>
+          <button type="button" class="btn-secondary" (click)="toggleDelete()">
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
