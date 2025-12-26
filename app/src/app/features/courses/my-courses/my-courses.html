@@ -1,1 +1,45 @@
-<p>my-courses works!</p>
+<app-navbar></app-navbar>
+
+<div class="my-courses-container">
+  <h2>Mis Cursos Inscritos</h2>
+
+  <div class="success-message" *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
+
+  <div class="loading" *ngIf="isLoading">
+    Cargando tus cursos...
+  </div>
+
+  <div class="courses-grid" *ngIf="!isLoading">
+    <div class="course-card" *ngFor="let course of courses">
+      <h3>{{ course.courseName }}</h3>
+
+      <div class="course-info">
+        <p><strong>Créditos:</strong> {{ course.credits }}</p>
+        <p><strong>Profesor:</strong> {{ course.professorName }}</p>
+        <p><strong>Estudiantes inscritos:</strong> {{ course.enrolledStudents }} / {{ course.maxStudents }}</p>
+      </div>
+
+      <div class="course-actions">
+        <button class="btn-secondary" (click)="viewStudents(course.courseId)">
+          Ver Compañeros
+        </button>
+        <button class="btn-danger" (click)="unenroll(course.courseId)">
+          Desinscribirse
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty-state" *ngIf="!isLoading && courses.length === 0">
+    <p>No estás inscrito en ningún curso.</p>
+    <button class="btn-primary" (click)="router.navigate(['/courses'])">
+      Ver Cursos Disponibles
+    </button>
+  </div>
+</div>
