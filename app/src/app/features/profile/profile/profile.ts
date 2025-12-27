@@ -1,3 +1,4 @@
+import { switchMap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -37,6 +38,7 @@ export class Profile implements OnInit {
     this.authService.currentUser$.subscribe(user => {
       this.user = user;
       if (user) {
+        // Esto asegura que editData siempre tenga los valores actuales
         this.editData = {
           firstName: user.firstName,
           lastName: user.lastName,
@@ -56,12 +58,36 @@ export class Profile implements OnInit {
     this.errorMessage = '';
     this.successMessage = '';
 
-    this.authService.updateProfile(this.editData).subscribe({
-      next: () => {
-        this.successMessage = 'Perfil actualizado correctamente';
+    this.authService.updateProfile(this.editData).pipe(
+      // 1️⃣ Aquí ocurre la magia: Si el update funciona,
+      // "cambiamos" (switch) inmediatamente a la petición de obtener el perfil.
+      switchMap(() => this.authService.getProfile())
+    ).subscribe({
+      next: (freshDataFromDb) => {
+        // 2️⃣ Aquí 'freshDataFromDb' son los datos FRESCOS traídos de tu endpoint GetProfile
+
+        // Actualizamos el usuario local combinando lo que teníamos + lo nuevo
+        // (Usamos spread ... por si tu endpoint GetProfile no devuelve ID o roles, no perderlos)
+        if (this.user) {
+          this.user = {
+            ...this.user,
+            ...freshDataFromDb
+          };
+
+          // Actualizamos también el objeto de edición para que quede sincronizado
+          this.editData = {
+            firstName: this.user.firstName,
+            lastName: this.user.lastName,
+            email: this.user.email
+          };
+        }
+
+        // 3️⃣ Cerramos todo y mostramos éxito
         this.isEditing = false;
+        this.successMessage = 'Perfil actualizado correctamente y sincronizado con BD.';
       },
       error: (error) => {
+        console.error(error);
         this.errorMessage = error.error?.message || 'Error al actualizar el perfil';
       }
     });
