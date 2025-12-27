@@ -33,9 +33,8 @@ export class Login {
     this.authService.login(this.loginData).subscribe({
       next: (response) => {
         this.isLoading = false;
-        this.authService.getProfile().subscribe(() => {
-          this.router.navigate(['/courses']);
-        });
+        // Redirigir directamente después del login exitoso
+        this.router.navigate(['/courses']);
       },
       error: (error) => {
         this.isLoading = false;

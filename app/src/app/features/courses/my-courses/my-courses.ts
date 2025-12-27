@@ -56,7 +56,7 @@ export class MyCourses implements OnInit {
     this.errorMessage = '';
     this.successMessage = '';
 
-    this.enrollmentService.unenroll({ courseId }).subscribe({
+    this.enrollmentService.unenroll( courseId ).subscribe({
       next: (response) => {
         this.successMessage = response.message;
         this.loadMyCourses();

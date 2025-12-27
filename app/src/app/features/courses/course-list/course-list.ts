@@ -48,7 +48,7 @@ export class CourseList implements OnInit {
     this.errorMessage = '';
     this.successMessage = '';
 
-    this.enrollmentService.enroll({ courseId }).subscribe({
+    this.enrollmentService.enroll( courseId ).subscribe({
       next: (response) => {
         this.successMessage = response.message;
         this.loadCourses();

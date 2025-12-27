@@ -12,11 +12,18 @@ export class EnrollmentService {
 
   constructor(private http: HttpClient) {}
 
-  enroll(data: EnrollmentRequest): Observable<EnrollmentResponse> {
-    return this.http.post<EnrollmentResponse>(`${this.apiUrl}/enrollment/enroll`, data);
+  enroll(courseId: number): Observable<EnrollmentResponse> {
+    // Se pasa courseId en la query string, body vacío
+    return this.http.post<EnrollmentResponse>(
+      `${this.apiUrl}/enrollment/enroll?courseId=${courseId}`,
+      {}
+    );
   }
 
-  unenroll(data: EnrollmentRequest): Observable<EnrollmentResponse> {
-    return this.http.post<EnrollmentResponse>(`${this.apiUrl}/enrollment/unenroll`, data);
+  unenroll(courseId: number): Observable<EnrollmentResponse> {
+    return this.http.post<EnrollmentResponse>(
+      `${this.apiUrl}/enrollment/unenroll?courseId=${courseId}`,
+      {}
+    );
   }
 }

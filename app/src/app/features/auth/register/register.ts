@@ -40,9 +40,22 @@ export class Register {
 
     this.authService.register(this.registerData).subscribe({
       next: (response) => {
-        this.isLoading = false;
-        this.authService.getProfile().subscribe(() => {
-          this.router.navigate(['/courses']);
+        // El registro fue exitoso, ahora hacer login automáticamente
+        const loginData = {
+          email: this.registerData.email,
+          password: this.registerData.password,
+          rememberMe: false
+        };
+
+        this.authService.login(loginData).subscribe({
+          next: () => {
+            this.isLoading = false;
+            this.router.navigate(['/courses']);
+          },
+          error: (error) => {
+            this.isLoading = false;
+            this.errorMessage = 'Registro exitoso pero error al iniciar sesión. Por favor, inicia sesión manualmente.';
+          }
         });
       },
       error: (error) => {

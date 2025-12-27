@@ -26,7 +26,13 @@ export class AuthService {
   private loadUserFromStorage(): void {
     const token = localStorage.getItem('token');
     if (token) {
-      this.getProfile().subscribe();
+      // Solo intentar cargar el perfil si hay token
+      this.getProfile().subscribe({
+        error: () => {
+          // Si falla, limpiar el token inválido
+          this.logout();
+        }
+      });
     }
   }
 
