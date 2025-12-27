@@ -21,7 +21,7 @@ Angular web application for managing student enrollments, course registration, a
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/jcomte23/StudentEnrollment.Angular.git
 cd StudentEnrollment.Angular/app
 ```
 
