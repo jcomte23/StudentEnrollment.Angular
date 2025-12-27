@@ -3,28 +3,15 @@
     <h2>Crear Cuenta</h2>
 
     <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
-      <div class="form-group">
-        <label for="firstName">Nombre</label>
-        <input
-          type="text"
-          id="firstName"
-          name="firstName"
-          [(ngModel)]="registerData.firstName"
-          required
-          placeholder="Juan"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="lastName">Apellido</label>
-        <input
-          type="text"
-          id="lastName"
-          name="lastName"
-          [(ngModel)]="registerData.lastName"
-          required
-          placeholder="Pérez"
-        />
+      <div class="name-row">
+        <div class="form-group" style="flex: 1;">
+          <label for="firstName">Nombre</label>
+          <input type="text" id="firstName" name="firstName" [(ngModel)]="registerData.firstName" required placeholder="Juan" />
+        </div>
+        <div class="form-group" style="flex: 1;">
+          <label for="lastName">Apellido</label>
+          <input type="text" id="lastName" name="lastName" [(ngModel)]="registerData.lastName" required placeholder="Pérez" />
+        </div>
       </div>
 
       <div class="form-group">

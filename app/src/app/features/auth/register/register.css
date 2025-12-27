@@ -1,95 +1,142 @@
+/* Contenedor consistente con el Login */
 .register-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 20px;
+  background: radial-gradient(circle at bottom right, #667eea, #764ba2);
+  padding: 40px 20px; /* Más padding vertical para scroll en móviles */
 }
 
+/* Tarjeta un poco más ancha para el registro */
 .register-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
   width: 100%;
-  max-width: 450px;
+  max-width: 500px; /* Un poco más ancho que el login */
+  transition: all 0.3s ease;
 }
 
 .register-card h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
-  color: #2c3e50;
+  margin-bottom: 2rem;
+  color: #1e293b;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+/* Layout de formulario inteligente */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 0.5rem;
-  color: #555;
-  font-weight: 500;
+  margin-bottom: 0.4rem;
+  color: #475569;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase; /* Toque moderno y profesional */
+  letter-spacing: 0.025em;
 }
 
 .form-group input {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 0.85rem 1rem;
+  border: 2px solid #f1f5f9;
+  border-radius: 12px;
   font-size: 1rem;
-  box-sizing: border-box;
+  background-color: #f8fafc;
+  color: #1e293b;
+  transition: all 0.2s ease-in-out;
 }
 
 .form-group input:focus {
   outline: none;
   border-color: #667eea;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
 }
 
+/* Feedback visual para errores */
 .error-message {
-  background-color: #fee;
-  color: #c33;
-  padding: 0.75rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
+  background-color: #fff1f2;
+  color: #be123c;
+  padding: 0.8rem;
+  border-radius: 10px;
+  border: 1px solid #fecdd3;
+  margin-bottom: 1.5rem;
+  font-size: 0.85rem;
+  text-align: center;
+  animation: slideIn 0.3s ease-out;
 }
 
+/* Botón de acción principal */
 .btn-primary {
   width: 100%;
-  padding: 0.75rem;
-  background-color: #667eea;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: 500;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  box-shadow: 0 10px 15px -3px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+  margin-top: 1rem;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: #5568d3;
+  transform: scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(102, 126, 234, 0.5);
 }
 
 .btn-primary:disabled {
-  background-color: #ccc;
+  background: #e2e8f0;
+  color: #94a3b8;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
+/* Enlace inferior */
 .login-link {
   text-align: center;
-  margin-top: 1.5rem;
-  color: #666;
+  margin-top: 2rem;
+  color: #64748b;
+  font-size: 0.95rem;
 }
 
 .login-link a {
-  color: #667eea;
+  color: #764ba2;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 700;
+  transition: color 0.2s;
 }
 
 .login-link a:hover {
-  text-decoration: underline;
+  color: #667eea;
+}
+
+/* Animaciones */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Media Query para pantallas medianas: Pone nombre y apellido lado a lado */
+@media (min-width: 480px) {
+  .name-row {
+    display: flex;
+    gap: 15px;
+  }
 }

@@ -1,111 +1,163 @@
+/* Contenedor principal con un fondo más profundo y moderno */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: radial-gradient(circle at top left, #667eea, #764ba2);
   padding: 20px;
 }
 
+/* Tarjeta con efecto de elevación y bordes más suaves */
 .login-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px; /* Bordes más redondeados para modernidad */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
+  transition: transform 0.3s ease;
 }
 
+.login-card:hover {
+  transform: translateY(-5px); /* Pequeña animación de flotado */
+}
+
+/* Título con mejor espaciado y peso */
 .login-card h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
-  color: #2c3e50;
+  margin-bottom: 2rem;
+  color: #1e293b;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #555;
-  font-weight: 500;
+  color: #475569;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: color 0.3s;
 }
 
+/* Inputs con estilo "soft-border" */
 .form-group input[type="email"],
 .form-group input[type="password"] {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 0.875rem 1rem;
+  border: 2px solid #f1f5f9; /* Borde más claro */
+  border-radius: 10px;
   font-size: 1rem;
-  box-sizing: border-box;
+  background-color: #f8fafc;
+  color: #1e293b;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .form-group input:focus {
   outline: none;
   border-color: #667eea;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1); /* Efecto de anillo de enfoque */
 }
 
+/* Checkbox personalizado */
 .checkbox-group {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
 }
 
 .checkbox-group input[type="checkbox"] {
-  width: auto;
+  width: 18px;
+  height: 18px;
+  accent-color: #667eea; /* Cambia el color del checkbox nativo */
+  cursor: pointer;
 }
 
 .checkbox-group label {
   margin: 0;
-  font-weight: normal;
-}
-
-.error-message {
-  background-color: #fee;
-  color: #c33;
-  padding: 0.75rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
+  font-weight: 400;
+  color: #64748b;
+  cursor: pointer;
   font-size: 0.9rem;
 }
 
+/* Alertas de error más elegantes */
+.error-message {
+  background-color: #fff1f2;
+  color: #e11d48;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #e11d48;
+  margin-bottom: 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  animation: shake 0.4s linear; /* Animación de error */
+}
+
+/* Botón con gradiente y sombra */
 .btn-primary {
   width: 100%;
-  padding: 0.75rem;
-  background-color: #667eea;
+  padding: 1rem;
+  background: linear-gradient(to right, #667eea, #764ba2);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 10px;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  box-shadow: 0 4px 14px 0 rgba(102, 126, 234, 0.39);
+  transition: all 0.3s ease;
+  margin-top: 1rem;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: #5568d3;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.45);
+  filter: brightness(1.1);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(1px);
 }
 
 .btn-primary:disabled {
-  background-color: #ccc;
+  background: #cbd5e1;
+  box-shadow: none;
   cursor: not-allowed;
+  color: #94a3b8;
 }
 
+/* Link de registro */
 .register-link {
   text-align: center;
-  margin-top: 1.5rem;
-  color: #666;
+  margin-top: 2rem;
+  color: #64748b;
+  font-size: 0.95rem;
 }
 
 .register-link a {
   color: #667eea;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
 }
 
 .register-link a:hover {
-  text-decoration: underline;
+  border-bottom: 2px solid #667eea;
+}
+
+/* Animación de error simple */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
 }

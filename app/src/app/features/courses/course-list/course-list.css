@@ -1,117 +1,172 @@
 .courses-container {
-  padding: 2rem;
-  max-width: 1200px;
+  padding: 3rem 2rem;
+  max-width: 1240px;
   margin: 0 auto;
 }
 
 .courses-container h2 {
-  margin-bottom: 1.5rem;
-  color: #2c3e50;
+  margin-bottom: 2rem;
+  color: #1e293b;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  position: relative;
 }
 
-.success-message {
-  background-color: #d4edda;
-  color: #155724;
-  padding: 0.75rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
+/* Subrayado decorativo para el título */
+.courses-container h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 2px;
+  margin-top: 8px;
 }
 
-.error-message {
-  background-color: #fee;
-  color: #c33;
-  padding: 0.75rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-}
-
-.loading {
-  text-align: center;
-  padding: 2rem;
-  font-size: 1.2rem;
-  color: #666;
-}
-
+/* Grid optimizado */
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
 }
 
+/* Tarjetas Estilo "Premium" */
 .course-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s, box-shadow 0.2s;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
+/* Efecto de luz al pasar el mouse */
 .course-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  border-color: #e2e8f0;
 }
 
 .course-card h3 {
-  margin-bottom: 1rem;
-  color: #2c3e50;
-  font-size: 1.3rem;
+  margin-bottom: 1.25rem;
+  color: #1e293b;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
+/* Contenedor de info con iconos simulados o bullets */
 .course-info {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .course-info p {
-  margin: 0.5rem 0;
-  color: #555;
-}
-
-.course-actions {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.95rem;
   display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #f8fafc;
 }
 
+.course-info p strong {
+  color: #475569;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+/* Badge de cupos dinámico */
+.course-info p:last-child {
+  border-bottom: none;
+  background: #f1f5f9;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+/* Botón de acción con estilo App */
 .btn-primary {
-  flex: 1;
-  padding: 0.75rem;
-  background-color: #667eea;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
   cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(102, 126, 234, 0.2);
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: #5568d3;
+  filter: brightness(1.1);
+  box-shadow: 0 10px 15px -3px rgba(102, 126, 234, 0.4);
 }
 
 .btn-primary:disabled {
-  background-color: #ccc;
+  background: #f1f5f9;
+  color: #cbd5e1;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
-.btn-secondary {
-  flex: 1;
-  padding: 0.75rem;
-  background-color: #6c757d;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.3s;
-}
-
-.btn-secondary:hover {
-  background-color: #5a6268;
-}
-
-.empty-state {
+/* Mensajes de carga y vacíos */
+.loading, .empty-state {
   text-align: center;
-  padding: 3rem;
-  color: #666;
-  font-size: 1.1rem;
+  padding: 4rem;
+  background: white;
+  border-radius: 20px;
+  color: #64748b;
+  font-weight: 500;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+/* Mensajes de éxito (Verde) */
+.success-message {
+  background-color: #ecfdf5;
+  color: #059669;
+  border-left: 5px solid #10b981;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  text-align: center;
+  animation: slideDown 0.4s ease-out;
+}
+
+/* Mensajes de error (Rojo) */
+.error-message {
+  background-color: #fff1f2;
+  color: #e11d48;
+  border-left: 5px solid #f43f5e;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  text-align: center;
+  animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
