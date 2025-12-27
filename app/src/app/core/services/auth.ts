@@ -41,6 +41,8 @@ export class AuthService {
       .pipe(
         tap(response => {
           localStorage.setItem('token', response.token);
+          // LLAMAMOS A GETPROFILE PARA ACTUALIZAR EL SUBJECT
+          this.getProfile().subscribe();
         })
       );
   }
@@ -50,6 +52,8 @@ export class AuthService {
       .pipe(
         tap(response => {
           localStorage.setItem('token', response.token);
+          // LLAMAMOS A GETPROFILE PARA ACTUALIZAR EL SUBJECT
+          this.getProfile().subscribe();
         })
       );
   }
