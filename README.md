@@ -13,16 +13,16 @@ Angular web application for managing student enrollments, course registration, a
 
 ## Prerequisites
 
-- Node.js (v18 or higher)
-- npm (comes with Node.js)
-- Angular CLI (`npm install -g @angular/cli`)
+- Node.js: v24.x (Current LTS)
+- npm: v10.x or higher
+- Angular CLI: npm install -g @angular/cli
 
 ## Installation
 
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd student-enrollment-web
+cd StudentEnrollment.Angular
 ```
 
 2. Install dependencies:
@@ -37,7 +37,7 @@ npm install
 ```typescript
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:5000/api/v1' // Update this
+  apiUrl: 'http://localhost:5252/api/v1' // Update this
 };
 ```
 
