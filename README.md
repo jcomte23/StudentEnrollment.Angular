@@ -1,4 +1,6 @@
 # Student Enrollment Web
+🎬 **Mira la explicación en video antes de leer el README:**  
+[Ver video de explicación](https://drive.google.com/file/d/1HiyWJcJHzS4yhrO_0eHbvNBEmgXTCzS9/view?usp=sharing)
 
 Angular web application for managing student enrollments, course registration, and user profiles.
 
