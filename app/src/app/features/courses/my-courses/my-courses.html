@@ -38,7 +38,7 @@
 
   <div class="empty-state" *ngIf="!isLoading && courses.length === 0">
     <p>No estás inscrito en ningún curso.</p>
-    <button class="btn-primary" (click)="router.navigate(['/courses'])">
+    <button class="btn-primary" (click)="goToCourses()">
       Ver Cursos Disponibles
     </button>
   </div>

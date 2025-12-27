@@ -28,6 +28,10 @@ export class MyCourses implements OnInit {
     this.loadMyCourses();
   }
 
+  goToCourses(): void {
+    this.router.navigate(['/courses']);
+  }
+
   loadMyCourses(): void {
     this.isLoading = true;
     this.errorMessage = '';
