@@ -50,6 +50,15 @@ ng serve
 
 Navigate to `http://localhost:4200/`
 
+### 🔑 Test Credentials (Demo Account)
+For quick testing without registration, you can use the following default user:
+
+Email: pedro.garcia@uni.edu.co
+
+Password: Estudiante123!
+
+Note: These credentials are for demonstration purposes only. You can also create a new account using the "Register" feature.
+
 ## Building for Production
 
 ```bash
